@@ -1,16 +1,16 @@
 # Charlotte Jenny Project OIM3640 :sunglasses:
 **This is a repository for Charlotte Chen and Jenny Ma's Final Project for OIM 3640.**
 
-## The Big Idea
+## 1. The Big Idea
 
-## Learning Objectives
+## 2. Learning Objectives
 
-## Implementation Plan
+## 3. Implementation Plan
 
-## Project Schedule
+## 4. Project Schedule
 
-## Collaboration Plan
+## 5. Collaboration Plan
 
-## Risks and Limitations
+## 6. Risks and Limitations
 
-## Additional Course Content
+## 7. Additional Course Content
