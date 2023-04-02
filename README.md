@@ -11,12 +11,29 @@ The app is to create a recipe app that is designed specifically for college stud
 
 ## 3. Implementation Plan
 
+Our app has many functions: including chatbot, search engine, create shopping list, find recipes with ingredients at hand (allow user input). It will consist of user interface on web, backend server, database of their saved ingredients and recipes, reciple matching algorithm (Cosine similarity, Jaccard similarity: needs more learning), Chatbox for better searching, and API retrivation. 
 
-https://www.mealme.ai/?utm_source=google&utm_medium=google+search&utm_campaign=MealMe+API%28Aziz%29&gclid=CjwKCAjw_YShBhAiEiwAMomsEFRvATNS1tZYzWqrq54Nwna2I66WdEtRfPeVY-1DmD4y3hxyFE2cYBoCpxsQAvD_BwE
+We found some existing API:
+[Grocery Price for Ingredients](https://www.mealme.ai/?utm_source=google&utm_medium=google+search&utm_campaign=MealMe+API%28Aziz%29&gclid=CjwKCAjw_YShBhAiEiwAMomsEFRvATNS1tZYzWqrq54Nwna2I66WdEtRfPeVY-1DmD4y3hxyFE2cYBoCpxsQAvD_BwE)
+[Recipe API](https://spoonacular.com/food-api)
 
-https://spoonacular.com/food-api
+Some libraries we are considering using are:
+
+Flask: to build a web app
+Urllib.request: to send HTTP requests to APIs and retrieve data
+SQLAlchemy (need more learning): to store and retrieve recipe data to analyze user preference, and provide recommendation
+ChatterBot (need more learning): train the recipe bot using the ChatterBotCorpusTrainer through using pre-existing datasets, and generate response accordingly
+NTLK: is used with ChatterBot to better tokenize the user input and detect possible cue words to generate responses
 
 ## 4. Project Schedule
+
+First week of April (4.3 - 4.9): Find the exact API we are using, learn more about building chatterbot, building simple database in the backend, learn about web building, and create a prototype demo for what our web interface will be like. 
+
+Second week of April (4.10 - 4.16): Start writing code: basics API integration, Flask, start CHATBOX, and search engine within the database. (Also, prepare for mid-project presentation -- subject to date changes)
+
+Third week of April: (4.17 - 4.23): Debugging and try adding new functions beyond our initial MVP, prepare for final demo/ presentation session on 4.25. 
+
+Fourth week of April: (4.24 - 4.29): Finalize codes, create project websites. 
 
 ## 5. Collaboration Plan
 
