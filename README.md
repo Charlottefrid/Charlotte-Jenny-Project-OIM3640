@@ -5,7 +5,7 @@
 ## 1. The Big Idea
 This project's primary objective is to provide college students with easy-to-prepare recipes and shopping lists based on raw materials, enabling users to construct a weekly menu plan to facilitate ingredient preparation planning.
 
-The app is to create a recipe app that is designed specifically for college students and busy employees who are not experienced with culinary and want to try out new recipes. The app will feature easy-to-do recipes that are tailored to the user's head count and personalized ingredient lists according to their preferences. Through talking to a chatbot or searching manually, users will be able to search for recipes, create a shopping list for ingredients, and find what they can do with existing ingredients at hand (users' input) . The minimum viable product (MVP) will be an app that provides basic functionalities, such as recipe search among a existing recipe API, ingredient list creation, search function in list, and chatbot.  To develop the MVP, we will utilize existing APIs for recipes. The stretch goal is to create a web app that allows users to input their data, including their dietary preferences and specialized house recipes into the big recipe database automatically.
+The app is to create a recipe app that is designed specifically for college students and busy employees who are not experienced with culinary and want to try out new recipes. The app will feature easy-to-do recipes that are tailored to the user's personalized ingredient lists according to their choice. Through talking to a chatbot or searching manually, users will be able to search for recipes under certain category, and create a shopping list for ingredients with total price. The minimum viable product (MVP) will be an app that provides basic functionalities, such as recipe search among a existing recipe API, ingredient list creation, search function in list, and chatbot.  To develop the MVP, we will utilize existing APIs for recipes. The stretch goal is to create a web app that allows users to input their data, including their dietary preferences and specialized house recipes into the big recipe database automatically.
 
 ## 2. Learning Objectives
 **1. Shared Learning Goals**
@@ -20,7 +20,7 @@ b. To guarantee the successful deliverance of the software, we will acquire proj
 
 ## 3. Implementation Plan
 
-Our app has many functions: including chatbot, search engine, create shopping list, find recipes with ingredients at hand (allow user input). It will consist of user interface on web, backend server, database of their saved ingredients and recipes, reciple matching algorithm (Cosine similarity, Jaccard similarity: needs more learning), Chatbox for better searching, and API retrivation. 
+Our app has many functions: including chatbot, search engine according to category, and shopping list with price generator. It will consist of user interface on web, backend server, reciple matching algorithm (Cosine similarity, Jaccard similarity: needs more learning), Chatbot for better searching, and API retrivation. 
 
 We found some existing API:
 1. [Grocery Price for Ingredients](https://www.mealme.ai/?utm_source=google&utm_medium=google+search&utm_campaign=MealMe+API%28Aziz%29&gclid=CjwKCAjw_YShBhAiEiwAMomsEFRvATNS1tZYzWqrq54Nwna2I66WdEtRfPeVY-1DmD4y3hxyFE2cYBoCpxsQAvD_BwE)
@@ -30,9 +30,8 @@ Some libraries we are considering using are:
 
 1. Flask: to build a web app
 2. Urllib.request: to send HTTP requests to APIs and retrieve data
-3. SQLAlchemy (need more learning): to store and retrieve recipe data to analyze user preference, and provide recommendation
-4. ChatterBot (need more learning): train the recipe bot using the ChatterBotCorpusTrainer through using pre-existing datasets, and generate response accordingly
-5. NTLK: is used with ChatterBot to better tokenize the user input and detect possible cue words to generate responses
+3. ChatterBot (need more learning): train the recipe bot using the ChatterBotCorpusTrainer through using pre-existing datasets, and generate response accordingly
+4. NTLK: is used with ChatterBot to better tokenize the user input and detect possible cue words to generate responses
 
 ## 4. Project Schedule
 
