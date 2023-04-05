@@ -11,11 +11,11 @@ The app is to create a recipe app that is designed specifically for college stud
 **1. Shared Learning Goals**
 a. To construct a Minimum Viable Product (MVP), it will be necessary to comprehend the fundamentals of software development, including programming languages, software architecture, and software development processes.
 b. We will learn how to collaborate with other team members, effectively communicate, and share responsibilities.
-c. As we develop our MVP, we will learn how to manage the product, including defining and prioritizing product features and comprehending user requirements.
+c. As we develop our MVP of app using flask, we will learn how to manage the product, including defining and prioritizing product features and comprehending user requirements.
 
 **2. Individual Learning Goals**
-a. We will learn how to develop software using Python and other tools.
-b. To guarantee the successful deliverance of the software, we will acquire project management skills such as task management, time management, risk management etc.
+a. We will learn how to develop software using Python and other tools, especially on API, CHATBOT, and FLASK. 
+b. To guarantee the successful deliverance of the software, we will acquire project management skills such as task management, time management, risk management etc. 
 
 
 ## 3. Implementation Plan
@@ -45,6 +45,12 @@ Fourth week of April: (4.24 - 4.29): Finalize codes, create project websites.
 
 ## 5. Collaboration Plan
 
+We will firstly start brainstorming the structure of the codes, and divide the work according to parts. For example, when Jenny is more proficient in using Flask, Charlotte can explore more upon Chatbox and NTLK topic detections. We will work on making the website and the presentation together. In optimal scenarios, we will try to meet in person three times a week, 2-3 hours each time when we write the codes and update each other on our progress. We will mainly use agile development. The three functions of the app is separated and independent to each other. We can start three at the same time. This software development method offers us a chance to always start small, debug, and make quick changes according to professor and peers' feedbacks. Through the iterations of "Plan, Collaborate, and Deliver (Feedback)" on a daily basis, we can improve efficiency in coding and especially debugging because we only need to debug small amount of codes at one time. It is much easier for us as beginners. 
+
 ## 6. Risks and Limitations
+What do you believe is the most significant threat to this project's success?
+
+One huge risk is the Chatbot response. While we are ambitious in providing more diverse responses for different triggers (without implementing self-generated ML response), it is risky that we fail to understand d write proper codes to run one sophisticated chatbot. 
 
 ## 7. Additional Course Content
+One very useful Course Content will be Natural Language Processor, which will tokenize the users' input, delete stop words, meaningless words, repetitive words.etc. 
