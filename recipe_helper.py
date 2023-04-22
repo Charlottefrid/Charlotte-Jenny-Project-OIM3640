@@ -288,7 +288,22 @@ def get_recipe_info(recipe_id):
         'similar_recipes': similar_recipes
     }
     return recipe_info
-    
+
+def spoonacular_chatbot(message, context_id = None):
+    url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/converse"
+
+    querystring = {"text": message, "contextId": context_id}
+
+    headers = {
+        "X-RapidAPI-Key": "8ce38d7e18msh20fe286a013a816p1dbda4jsn3e87d9768ab5",
+        "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
+    }
+
+    response = requests.request("GET", url, headers=headers, params=querystring)
+
+    return response.json()
+
+
 
 def main():
     query = "burger"
@@ -315,6 +330,12 @@ def main():
     # pprint(steps)
     # pprint(get_recipe_info(recipe_id))
 
+    while True:
+        user_input = input("What are some good recipes? ")
+        if user_input == "quit":
+            break
+        response = spoonacular_chatbot(user_input)
+        print(response)
 
 if __name__ == '__main__':
     main()
