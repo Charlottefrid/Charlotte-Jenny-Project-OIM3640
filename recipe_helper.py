@@ -4,15 +4,14 @@ from pprint import pprint
 
 def search_recipes(query):
     """
-    Given query strings (keyword of recipes), return 10 related recipes, including the corresponding ID, title, cooking time, 
-    image.
+    Given query strings (keyword of recipes), return 10 related recipes, including the corresponding ID, title, and cooking time.
     """
 
     url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search"
 
     querystring = {
         "query": query,
-        "number": "10",
+        "number": "20",
         "instructionsRequired": "true"
     }
 
@@ -28,17 +27,10 @@ def search_recipes(query):
         data = response.json()["results"]
         recipes = []
         for recipe in data:
-         # Check if "image" key exists in dictionary
-            if "image" in recipe:
-                image_url = recipe["image"]
-            else:
-                image_url = None
-
             recipe_info = {
                 "id": recipe["id"],
                 "title": recipe["title"],
                 "readyInMinutes": recipe["readyInMinutes"],
-                "image": image_url
             }
             recipes.append(recipe_info)
         return recipes
@@ -49,8 +41,7 @@ def search_recipes(query):
 
 def search_ingredients(ingredients):
     """
-    Given ingredients, return 5 related recipes, including the corresponding title, 
-    image, used/missed ingredients.
+    Given ingredients, return 5 related recipes, including the corresponding title and used/missed ingredients.
     """
 
     url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients"
@@ -70,7 +61,6 @@ def search_ingredients(ingredients):
     for recipe in data:
         recipe_info = {}
         recipe_info['title'] = recipe['title']
-        recipe_info['image'] = recipe['image']
         used_ingredients = []
         missed_ingredients = []
         for ingredient in recipe['usedIngredients']:
@@ -91,7 +81,7 @@ def search_ingredients(ingredients):
 
 def get_restaurant_menu(query):
     """
-    Given query of recipe, retrun up to 15 recipes in restaurant menus, incluidng the titles, images, and the restaurant names.
+    Given query of recipe, retrun up to 15 recipes in restaurant menus, incluidng the titles and the restaurant names.
     """
 
     url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/menuItems/search"
@@ -115,7 +105,6 @@ def get_restaurant_menu(query):
         for recipe in data["menuItems"]:
             recipe_info = {
                 "title": recipe["title"],
-                "image": recipe["image"],
                 "restaurant_chain": recipe.get("restaurantChain", "N/A")
             }
             recipe_result = search_recipes(recipe['title'])
@@ -189,9 +178,11 @@ def get_recipe_price_breakdown(recipe_id):
         "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
     }
     response = requests.request("GET", url, headers=headers)
-    data = response.json()
     if response.status_code == 200:
-        return data
+        data = response.json()
+        total_cost = data["totalCost"]
+        cost_per_serving = data["totalCostPerServing"]
+        return total_cost, cost_per_serving
     else:
         response.raise_for_status()
 
@@ -238,8 +229,7 @@ def get_steps(recipe_id):
 
 def get_similar_recipe(recipe_id):
     """
-    Given the recipe id, return similar recipes, including the corresponding title, 
-    image, and url for additional information.
+    Given the recipe id, return similar recipes, including the corresponding title.
     """
 
     similar_url = f"https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/{recipe_id}/similar"
@@ -258,15 +248,8 @@ def get_similar_recipe(recipe_id):
     else:
         similar_recipes = []
         for recipe in data:
-            # Check if "image" key exists in dictionary
-            if "image" in recipe:
-                image_url = recipe["image"]
-            else:
-                image_url = None
-
             similar_info = {
                 "title": recipe["title"],
-                "image": image_url,
             }
             similar_recipes.append(similar_info)
         return similar_recipes
@@ -351,16 +334,16 @@ def get_a_random_food_joke():
 
 
 def main():
-        query = "pasta"
-        recipes1 = search_recipes(query)
-        # pprint(recipes1)
-        ingredients = "beef, pepper"
-        recipes2 = search_ingredients(ingredients)
-        # pprint(recipes2)
-        recipe3 = get_restaurant_menu(query)
-        pprint(recipe3)
-        random_vegan_recipe = get_random_recipes(tags="vegan")
-        # pprint(random_vegan_recipe)
+    query = "burger"
+    recipes1 = search_recipes(query)
+    # pprint(recipes1)
+    ingredients = "beef, pepper"
+    recipes2 = search_ingredients(ingredients)
+    # pprint(recipes2)
+    recipe3 = get_restaurant_menu(query)
+    # pprint(recipe3)
+    random_vegan_recipe = get_random_recipes(tags="vegan")
+    # pprint(random_vegan_recipe)
 
 
         recipe_id = 720738  # Replace with your desired recipe ID
@@ -369,24 +352,11 @@ def main():
         similar_recipe = get_similar_recipe(recipe_id)
         steps = get_steps(recipe_id)
 
-        pprint(nutrition_info)
-        pprint(price)
-        pprint(similar_recipe)
-        pprint(steps)
-        pprint(get_recipe_info(recipe_id))
-
-        food = "steak"
-        maxPrice = 50
-        wine_pairing = get_wine_pairing(food,maxPrice)
-        print (wine_pairing)
-
-        wine = "malbec"
-        wine_description = get_wine_description(wine)
-        print(wine_description)
-
-        wine = "cabernet sauvignon"
-        dish_pairing = get_dish_pairing(wine)
-        print (dish_pairing)
+    # pprint(nutrition_info)
+    # pprint(price)
+    # pprint(similar_recipe)
+    # pprint(steps)
+    pprint(get_recipe_info(recipe_id))
 
         food_joke= get_a_random_food_joke()
         print(food_joke)

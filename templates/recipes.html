@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Amazing app to help you find recipes you like</title>
+    </head>
+
+    <body>
+        <h1>Recipe Search</h1>
+        <form method="POST" name="Recipe">
+            <p>
+                Hello! Welcome to the Recipe searching engine! Please enter any keyword related to the recipe
+                and we will show you the searching results.
+              </p>
+              {% if error %}
+              <p style="color: red">
+                There is no recipe can be found.
+              </p>
+              {% endif %}
+              <p>Please enter the keywords of the recipe</p>
+              <p>
+                <input type="text" name="recipe" placeholder="What recipe are you looking for?" />
+              </p>
+              <p>
+                <input type="submit" name="" value="Search" />
+              </p>
+        </form>
+    </body>
+</html>

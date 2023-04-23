@@ -1,49 +1,40 @@
-from flask import Flask, request, jsonify
-from recipe_helper import search_recipes, search_ingredients, get_restaurant_menu, get_random_recipes
+from flask import Flask, render_template, request
+from recipe_helper import search_recipes, get_recipe_info
 
 app = Flask(__name__)
 
-@app.route('/recipes/search')
-def search_recipe():
-    query = request.args.get('query')
-    if not query:
-        return "Error: No query provided."
-    recipes = search_recipes(query)
-    if recipes:
-        return jsonify(recipes)
-    else:
-        return "Error: Unable to search for recipes."
+@app.route('/')
+def index():
+    return render_template("index.html")
 
-@app.route('/recipes/ingredients')
-def search_ingredient():
-    ingredients = request.args.get('ingredients')
-    if not ingredients:
-        return "Error: No ingredients provided."
-    recipes = search_ingredients(ingredients)
-    if recipes:
-        return jsonify(recipes)
-    else:
-        return "Error: Unable to search for recipes."
+@app.route('/recipes', methods=["GET", "POST"])
+def recipes():
+    if request.method == "POST":
+        query = str(request.form["recipe"])
+        results = search_recipes(query)
+        print (results)
+        if results:
+            return render_template("recipe_result.html",  results=results)
+        else:
+            return render_template("recipes.html", error=True)
+    return render_template("recipes.html", error=None)
 
-@app.route('/recipes/menu')
-def get_menu():
-    query = request.args.get('query')
-    if not query:
-        return "Error: No query provided."
-    menu_items = get_restaurant_menu(query)
-    if menu_items:
-        return jsonify(menu_items)
-    else:
-        return "Error: Unable to get menu items."
+@app.route('/recipe/<recipe_id>')
+def recipe_detail(recipe_id):
+    recipe_info = get_recipe_info(recipe_id)
+    return render_template('recipe_detail.html', recipe_info=recipe_info)
 
-@app.route('/recipes/random')
-def get_random():
-    tags = request.args.get('tags')
-    random_recipes = get_random_recipes(tags)
-    if random_recipes:
-        return jsonify(random_recipes)
-    else:
-        return "Error: Unable to get random recipes."
+@app.route('/ingredients')
+def ingredients():
+    pass
+
+@app.route('/menus')
+def menus():
+    pass
+
+@app.route('/random')
+def random():
+    pass
 
 if __name__ == '__main__':
     app.run(debug=True)
