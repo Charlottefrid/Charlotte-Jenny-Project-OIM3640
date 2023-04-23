@@ -346,11 +346,11 @@ def main():
     # pprint(random_vegan_recipe)
 
 
-        recipe_id = 720738  # Replace with your desired recipe ID
-        nutrition_info = get_nutrition(recipe_id)
-        price = get_recipe_price_breakdown(recipe_id)
-        similar_recipe = get_similar_recipe(recipe_id)
-        steps = get_steps(recipe_id)
+    recipe_id = 720738  # Replace with your desired recipe ID
+    nutrition_info = get_nutrition(recipe_id)
+    price = get_recipe_price_breakdown(recipe_id)
+    similar_recipe = get_similar_recipe(recipe_id)
+    steps = get_steps(recipe_id)
 
     # pprint(nutrition_info)
     # pprint(price)
@@ -358,8 +358,21 @@ def main():
     # pprint(steps)
     pprint(get_recipe_info(recipe_id))
 
-        food_joke= get_a_random_food_joke()
-        print(food_joke)
+    wine = "malbec"
+    description = get_wine_description(wine)
+    if description:
+        print(f"Description of {wine}: {description}")
+    else:
+        print(f"Failed to get description of {wine}")
+
+    food = "steak"
+    pairing = get_wine_pairing(food)
+    print (pairing)
+
+    
+
+    food_joke= get_a_random_food_joke()
+    print(food_joke)
 
 if __name__ == '__main__':
     main()
