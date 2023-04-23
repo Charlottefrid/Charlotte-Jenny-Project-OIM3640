@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amazing app to help you find recipes you like</title>
+  </head>
+
+  <body>
+    <h1>Get Inspired!</h1>
+    <form method="POST" name="random">
+      <p>
+        Hello! Are you feeling stumped on what to eat today? Our random recipe
+        generator can help you break out of your food rut and discover new and
+        exciting dishes. Simply enter a tag and let us do the rest. Who knows,
+        you might just find your new favorite meal!<br />
+        ** The tags (can be diets, meal types, cuisines, or intolerances) mean
+        that the feature you want your recipes have.
+      </p>
+      {% if error %}
+      <p style="color: red">There is no recipe can be found.</p>
+      {% endif %}
+      <p>
+        Please enter the tag of the food you want to eat or click "Search"
+        directly!
+      </p>
+      <p>
+        <input
+          type="text"
+          name="random"
+          placeholder="What menu are you looking for?"
+        />
+      </p>
+      <p>
+        <input type="submit" name="" value="Search" />
+      </p>
+    </form>
+  </body>
+</html>

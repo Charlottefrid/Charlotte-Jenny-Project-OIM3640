@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amazing app to help you find recipes you like</title>
+  </head>
+
+  <body>
+    <h1>Restaurant Renu Generator</h1>
+    <form method="POST" name="menus">
+      <p>
+        Hello! Welcome to our exclusive Restaurant Renu Generator! If you're
+        looking for something truly unique and special for your next dining
+        experience, you've come to the right place. Our generator provides
+        access to menus from some of the most exclusive and sought-after
+        restaurants around the world. With our generator, you'll have the
+        opportunity to explore menus that are often reserved for only the most
+        elite foodies. So go ahead, browse through our collection and get ready
+        to indulge in a culinary adventure like no other!
+      </p>
+      {% if error %}
+      <p style="color: red">There is no recipe can be found.</p>
+      {% endif %}
+      <p>Please enter the keywords of the recipe</p>
+      <p>
+        <input
+          type="text"
+          name="menus"
+          placeholder="What menu are you looking for?"
+        />
+      </p>
+      <p>
+        <input type="submit" name="" value="Search" />
+      </p>
+    </form>
+  </body>
+</html>

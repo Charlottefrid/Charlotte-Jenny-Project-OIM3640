@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amazing app to help you find recipes you like</title>
+  </head>
+
+  <body>
+    <h1>Get Wine Pairing for Your Dishes!</h1>
+    <form method="POST" name="wine">
+      <p>
+        Hello! Welcome to our Wine Pairing Recommendation Engine! With our
+        engine, you can easily find a wine that pairs perfectly with your
+        favorite dishes or ingredients. Simply enter the name of a dish,
+        ingredient, or cuisine, and our engine will provide you with a list of
+        recommended wines to complement your meal.
+      </p>
+      {% if error %}
+      <p style="color: red">There is no wine can be paired.</p>
+      {% endif %}
+      <p>Please enter the dish/ingredient/cuisine you want to pair with!</p>
+      <p>
+        <input
+          type="text"
+          name="wine"
+          placeholder="What dish are you pairing?"
+        />
+      </p>
+      <p>
+        <input type="submit" name="" value="Search" />
+      </p>
+    </form>
+  </body>
+</html>

@@ -29,7 +29,7 @@ from pprint import pprint
 
 # pprint(response.text)
 
-## search by ingredients
+# search by ingredients
 
 # url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients"
 
@@ -87,16 +87,16 @@ from pprint import pprint
 
 # price breakdown
 
-url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/1003464/priceBreakdownWidget.json"
+# url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/1003464/priceBreakdownWidget.json"
 
-headers = {
-	"X-RapidAPI-Key": "17268cd20amsh963ba9a211d5552p19affdjsn8e9414b5b54b",
-	"X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
-}
+# headers = {
+# 	"X-RapidAPI-Key": "17268cd20amsh963ba9a211d5552p19affdjsn8e9414b5b54b",
+# 	"X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
+# }
 
-response = requests.request("GET", url, headers=headers)
+# response = requests.request("GET", url, headers=headers)
 
-pprint(response.text)
+# pprint(response.text)
 
 # steps
 
@@ -112,3 +112,5 @@ pprint(response.text)
 # response = requests.request("GET", url, headers=headers, params=querystring)
 
 # pprint(response.text)
+
+# wine pairin

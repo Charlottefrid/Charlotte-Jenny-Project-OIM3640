@@ -1,18 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Amazing app to help you find recipes you like</title>
-    </head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amazing app to help you find recipes you like</title>
+  </head>
 
-    <body>
-        <h1>Recipe Search</h1>
-        <a href="{{url_for('recipes')}}">Search Recipes by Keywords</a>
-        <a href="{{url_for('ingredients')}}">Search Recipes by Ingredients</a>
-        <a href="{{url_for('menus')}}">Search Restaurant Menus</a>
-        <a href="{{url_for('random')}}">Get Random Recipes</a>
-    </body>
+  <body>
+    <h1>Welcome to Charlotte and Jenny's Food Web App</h1>
+    <p>
+      Welcome to our incredible Web App, which provides a variety of
+      food-related features to satiate your culinary needs! We've got you
+      covered, whether you're looking for recipes based on keywords or
+      ingredients, restaurant menus, or random recipes for inspiration. If you
+      are interested in wine and cuisine pairing, we can also assist you. So
+      that you can impress your visitors with the perfect pairing, our app also
+      provides wine recommendations for dishes and dish recommendations for
+      wines. With so many options available, we are confident that you will find
+      something to satiate your appetite. Choose your favourite feature and
+      begin your exploration!
+    </p>
+    <p>Please select one of the following options:</p>
+    <ul>
+      <li><a href="{{url_for('recipes')}}">Search Recipes by Keywords</a></li>
+      <li>
+        <a href="{{url_for('ingredients_recipes')}}"
+          >Search Recipes by Ingredients</a
+        >
+      </li>
+      <li><a href="{{url_for('menus')}}">Search Restaurant Menus</a></li>
+      <li><a href="{{url_for('random')}}">Get Random Recipes</a></li>
+      <li>
+        <a href="{{url_for('wine')}}">Get Wine Recommendations for Dishes</a>
+      </li>
+      <li>
+        <a href="{{url_for('dish')}}">Get Dish Recommendations for Wines</a>
+      </li>
+    </ul>
+    <h3>A little joke to start your day ^^</h3>
+    <p>{{ joke['text'] }}</p>
+  </body>
 </html>
-

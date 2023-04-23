@@ -1,51 +1,66 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>{{ recipe_info['steps']['title'] }}</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>{{ recipe_info['steps']['title'] }}</h1>
 
     <h2>Ingredients</h2>
     <ul>
-        {% for ingredient in recipe_info['steps']['ingredient_names'] %}
-            <li>{{ ingredient.capitalize() }}</li>
-        {% endfor %}
+      {% for ingredient in recipe_info['steps']['ingredient_names'] %}
+      <li>{{ ingredient.capitalize() }}</li>
+      {% endfor %}
     </ul>
 
     <h2>Equipments</h2>
     <ul>
-    {% for equipment in recipe_info['steps']['equipment_names'] %}
-        <li>{{ equipment.capitalize() }}</li>
-    {% endfor %}
+      {% for equipment in recipe_info['steps']['equipment_names'] %}
+      <li>{{ equipment.capitalize() }}</li>
+      {% endfor %}
     </ul>
 
     <h2>Steps</h2>
     <ul>
-        {% for step in recipe_info['steps']['steps']%}
-            <p>{{ step }}</p>
-        {% endfor %} 
+      {% for step in recipe_info['steps']['steps']%}
+      <p>{{ step }}</p>
+      {% endfor %}
     </ul>
 
     <h2>Nutrition</h2>
     <ul>
-        <li>Calories: {{ recipe_info['nutrition']['Calories']['amount'] }} Cal</li>
-        <li>Fat: {{ recipe_info['nutrition']['Fat']['amount'] }} g OR {{recipe_info['nutrition']['Fat']['percent_of_daily_needs']}} % of daily needs </li>
-        <li>Protein: {{ recipe_info['nutrition']['Protein']['amount'] }} g OR {{recipe_info['nutrition']['Protein']['percent_of_daily_needs']}} % of daily needs</li>
-        <li>Carbohydrates: {{ recipe_info['nutrition']['Carbohydrates']['amount'] }} g OR {{recipe_info['nutrition']['Carbohydrates']['percent_of_daily_needs']}} % of daily needs</li>
+      <li>
+        Calories: {{ recipe_info['nutrition']['Calories']['amount'] }} Cal
+      </li>
+      <li>
+        Fat: {{ recipe_info['nutrition']['Fat']['amount'] }} g OR
+        {{recipe_info['nutrition']['Fat']['percent_of_daily_needs']}} % of daily
+        needs
+      </li>
+      <li>
+        Protein: {{ recipe_info['nutrition']['Protein']['amount'] }} g OR
+        {{recipe_info['nutrition']['Protein']['percent_of_daily_needs']}} % of
+        daily needs
+      </li>
+      <li>
+        Carbohydrates: {{ recipe_info['nutrition']['Carbohydrates']['amount'] }}
+        g OR
+        {{recipe_info['nutrition']['Carbohydrates']['percent_of_daily_needs']}}
+        % of daily needs
+      </li>
     </ul>
 
     <h2>Price</h2>
     <ul>
-        <li>Total Cost - $ {{ recipe_info['price_breakdown'][0] }}</li>
-        <li>Cost Per Serving - $ {{ recipe_info['price_breakdown'][1] }}</li>
-    </ul>    
-
-    <h2>Similar Recipes You Can Research ... </h2>
-    <ul>
-        {% for recipe in recipe_info['similar_recipes'] %}
-            <li>{{ recipe['title'] }}</li>
-        {% endfor %}
+      <li>Total Cost - $ {{ recipe_info['price_breakdown'][0] }}</li>
+      <li>Cost Per Serving - $ {{ recipe_info['price_breakdown'][1] }}</li>
     </ul>
-</body>
+
+    <h2>Similar Recipes You Can Research ...</h2>
+    <ul>
+      {% for recipe in recipe_info['similar_recipes'] %}
+      <li>{{ recipe['title'] }}</li>
+      {% endfor %}
+    </ul>
+  </body>
 </html>
