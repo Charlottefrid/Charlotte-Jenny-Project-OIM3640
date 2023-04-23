@@ -289,53 +289,107 @@ def get_recipe_info(recipe_id):
     }
     return recipe_info
 
-def spoonacular_chatbot(message, context_id = None):
-    url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/converse"
-
-    querystring = {"text": message, "contextId": context_id}
-
+def get_wine_pairing(food, maxPrice=None):
+    """Find a wine that goes well with a food. 
+    """
+    url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/wine/pairing"
+    querystring = {"food": food, "maxPrice": maxPrice}
     headers = {
         "X-RapidAPI-Key": "8ce38d7e18msh20fe286a013a816p1dbda4jsn3e87d9768ab5",
         "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
     }
-
     response = requests.request("GET", url, headers=headers, params=querystring)
+    if response.status_code == 200:
+        return response.json()
+    else:
+        print(f"Error: Failed to get wine pairing. Status code: {response.status_code}")
+        return None
 
-    return response.json()
+def get_wine_description(wine):
+    """Get a simple description of a certain wine, e.g. "malbec", "riesling", or "merlot".
+       Returns a string containing the wine's description, or None if the API call fails.
+    """
+    url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/wine/description"
+    querystring = {"wine": wine}
+    headers = {
+        "X-RapidAPI-Key": "8ce38d7e18msh20fe286a013a816p1dbda4jsn3e87d9768ab5",
+        "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
+    }
+    response = requests.request("GET", url, headers=headers, params=querystring)
+    if response.status_code == 200:
+        return response.json()['wineDescription']
+    else:
+        print(f"Error: Failed to get wine description. Status code: {response.status_code}")
+        return None
 
+def get_dish_pairing(wine):
+    """Find a dish that goes well with a given wine."""
+    endpoint = "food/wine/dishes"
+    url = f"https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/{endpoint}"
+    headers = {
+        "X-RapidAPI-Key": "8ce38d7e18msh20fe286a013a816p1dbda4jsn3e87d9768ab5",
+        "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
+    }
+    params = {"wine": wine}
+    response = requests.get(url, headers=headers, params=params)
+    if response.status_code == 200:
+        return response.json()
+    else:
+        print(f"Error: Failed to get dish pairing. Status code: {response.status_code}")
+        return None
+
+import requests
+
+def get_a_random_food_joke():
+    url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/jokes/random"
+    headers = {
+        "X-RapidAPI-Key": "8ce38d7e18msh20fe286a013a816p1dbda4jsn3e87d9768ab5",
+        "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
+    }
+    response = requests.request("GET", url, headers=headers)
+    return response.text
 
 
 def main():
-    query = "burger"
-    recipes1 = search_recipes(query)
-    # pprint(recipes1)
-    ingredients = "beef, pepper"
-    recipes2 = search_ingredients(ingredients)
-    # pprint(recipes2)
-    recipe3 = get_restaurant_menu(query)
-    pprint(recipe3)
-    random_vegan_recipe = get_random_recipes(tags="vegan")
-    # pprint(random_vegan_recipe)
+        query = "pasta"
+        recipes1 = search_recipes(query)
+        # pprint(recipes1)
+        ingredients = "beef, pepper"
+        recipes2 = search_ingredients(ingredients)
+        # pprint(recipes2)
+        recipe3 = get_restaurant_menu(query)
+        pprint(recipe3)
+        random_vegan_recipe = get_random_recipes(tags="vegan")
+        # pprint(random_vegan_recipe)
 
 
-    recipe_id = 720738  # Replace with your desired recipe ID
-    nutrition_info = get_nutrition(recipe_id)
-    price = get_recipe_price_breakdown(recipe_id)
-    similar_recipe = get_similar_recipe(recipe_id)
-    steps = get_steps(recipe_id)
+        recipe_id = 720738  # Replace with your desired recipe ID
+        nutrition_info = get_nutrition(recipe_id)
+        price = get_recipe_price_breakdown(recipe_id)
+        similar_recipe = get_similar_recipe(recipe_id)
+        steps = get_steps(recipe_id)
 
-    # pprint(nutrition_info)
-    # pprint(price)
-    # pprint(similar_recipe)
-    # pprint(steps)
-    # pprint(get_recipe_info(recipe_id))
+        pprint(nutrition_info)
+        pprint(price)
+        pprint(similar_recipe)
+        pprint(steps)
+        pprint(get_recipe_info(recipe_id))
 
-    while True:
-        user_input = input("What are some good recipes? ")
-        if user_input == "quit":
-            break
-        response = spoonacular_chatbot(user_input)
-        print(response)
+        food = "steak"
+        maxPrice = 50
+        wine_pairing = get_wine_pairing(food,maxPrice)
+        print (wine_pairing)
+
+        wine = "malbec"
+        wine_description = get_wine_description(wine)
+        print(wine_description)
+
+        wine = "cabernet sauvignon"
+        dish_pairing = get_dish_pairing(wine)
+        print (dish_pairing)
+
+        food_joke= get_a_random_food_joke()
+        print(food_joke)
 
 if __name__ == '__main__':
     main()
