@@ -72,7 +72,6 @@ from pprint import pprint
 
 # restaurant menu
 
-
 # url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/menuItems/search"
 
 # querystring = {"query":"burger","offset":"0","number":"10","minCalories":"0","maxCalories":"5000","minProtein":"0","maxProtein":"100","minFat":"0","maxFat":"100","minCarbs":"0","maxCarbs":"100"}
@@ -88,19 +87,18 @@ from pprint import pprint
 
 # price breakdown
 
-# url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/1003464/priceBreakdownWidget.json"
+url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/1003464/priceBreakdownWidget.json"
 
-# headers = {
-# 	"X-RapidAPI-Key": "17268cd20amsh963ba9a211d5552p19affdjsn8e9414b5b54b",
-# 	"X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
-# }
+headers = {
+	"X-RapidAPI-Key": "17268cd20amsh963ba9a211d5552p19affdjsn8e9414b5b54b",
+	"X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
+}
 
-# response = requests.request("GET", url, headers=headers)
+response = requests.request("GET", url, headers=headers)
 
-# pprint(response.text)
+pprint(response.text)
 
 # steps
-
 
 # url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/324694/analyzedInstructions"
 
