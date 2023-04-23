@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amazing app to help you find recipes you like</title>
+  </head>
+
+  <body>
+    <h1>Recipe Search</h1>
+    <form method="POST" name="ingredients_recipes">
+      <p>
+        Welcome to our Recipe Searching engine! If you're looking for recipe
+        inspiration and want to make use of the ingredients you have on hand,
+        you've come to the right place. Simply enter all the ingredients you
+        have now, and we'll provide you with a range of recipes that use those
+        ingredients. From pantry staples to fresh produce, our engine will help
+        you make the most of what you have and create delicious meals without
+        any extra trips to the grocery store. So go ahead, start your search now
+        and see what culinary creations you can whip up with what you already
+        have at home!
+      </p>
+      {% if error %}
+      <p style="color: red">There is no recipe can be found.</p>
+      {% endif %}
+      <p>Please enter your ingredients, seperated by commas</p>
+      <p>
+        <input
+          type="text"
+          name="ingredients_recipes"
+          placeholder="What recipe are you looking for?"
+        />
+      </p>
+      <p>
+        <input type="submit" name="" value="Search" />
+      </p>
+    </form>
+  </body>
+</html>

@@ -8,7 +8,7 @@
   </head>
 
   <body>
-    <h1>Search Results Containing Keywords</h1>
+    <h1>Get Inspired!</h1>
     {% if results %}
     <table>
       <thead>
@@ -24,8 +24,6 @@
             <a href="/recipe/{{ result['id'] }}">{{ result['title'] }}</a>
           </td>
           <td>{{ result['readyInMinutes'] }}</td>
-          <td>{{ result['used_ingredients'] }}</td>
-          <td>{{ result['missed_ingredients'] }}</td>
         </tr>
         {% endfor %}
       </tbody>

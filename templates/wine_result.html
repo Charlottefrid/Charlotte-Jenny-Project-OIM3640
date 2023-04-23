@@ -8,24 +8,21 @@
   </head>
 
   <body>
-    <h1>Search Results Containing Keywords</h1>
+    <h1>Get Wine Pairing for Your Dishes!</h1>
     {% if results %}
+    <p>{{ results["pairing_text"] }}</p>
     <table>
       <thead>
         <tr>
-          <th>Recipe</th>
-          <th>Ready In Minutes</th>
+          <th>Wine</th>
+          <th>Descriptions</th>
         </tr>
       </thead>
       <tbody>
-        {% for result in results %}
+        {% for wine in results["wines"] %}
         <tr>
-          <td>
-            <a href="/recipe/{{ result['id'] }}">{{ result['title'] }}</a>
-          </td>
-          <td>{{ result['readyInMinutes'] }}</td>
-          <td>{{ result['used_ingredients'] }}</td>
-          <td>{{ result['missed_ingredients'] }}</td>
+          <td>{{ wine["name"].capitalize() }}</td>
+          <td>{{ wine["description"] }}</td>
         </tr>
         {% endfor %}
       </tbody>

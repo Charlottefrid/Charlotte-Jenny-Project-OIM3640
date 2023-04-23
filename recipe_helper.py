@@ -11,7 +11,7 @@ def search_recipes(query):
 
     querystring = {
         "query": query,
-        "number": "20",
+        "number": "30",
         "instructionsRequired": "true"
     }
 
@@ -41,12 +41,12 @@ def search_recipes(query):
 
 def search_ingredients(ingredients):
     """
-    Given ingredients, return 5 related recipes, including the corresponding title and used/missed ingredients.
+    Given ingredients, return 30 related recipes, including the corresponding title and used/missed ingredients.
     """
 
     url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients"
 
-    querystring = {"ingredients": ingredients, "number": "5",
+    querystring = {"ingredients": ingredients, "number": "30",
                    "ignorePantry": "true", "ranking": "2"}
 
     headers = {
@@ -69,24 +69,24 @@ def search_ingredients(ingredients):
             missed_ingredients.append(ingredient['name'])
         recipe_info['used_ingredients'] = used_ingredients
         recipe_info['missed_ingredients'] = missed_ingredients
-        
+
         # Call search_recipe with recipe title as query
         recipe_result = search_recipes(recipe['title'])
         if recipe_result:
             recipe_info.update(recipe_result[0])
-            
+
         recipes.append(recipe_info)
     return recipes
 
 
 def get_restaurant_menu(query):
     """
-    Given query of recipe, retrun up to 15 recipes in restaurant menus, incluidng the titles and the restaurant names.
+    Given query of recipe, retrun up to 30 recipes in restaurant menus, incluidng the titles and the restaurant names.
     """
 
     url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/menuItems/search"
 
-    querystring = {"query": query, "number": "15", "minCalories": "0",
+    querystring = {"query": query, "number": "30", "minCalories": "0",
                    "minProtein": "0", "minFat": "0", "minCarbs": "0"}
 
     headers = {
@@ -123,7 +123,7 @@ def get_random_recipes(tags=""):
         "X-RapidAPI-Key": "17268cd20amsh963ba9a211d5552p19affdjsn8e9414b5b54b",
         "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
     }
-    querystring = {"number": "15"}
+    querystring = {"number": "30"}
     if tags:
         querystring["tags"] = tags
     response = requests.request(
@@ -135,7 +135,7 @@ def get_random_recipes(tags=""):
         recipe_results = search_recipes(title)
         for recipe_info in recipe_results:
             recipe_info["title"] = title
-            recipes.append(recipe_info)  
+            recipes.append(recipe_info)
     return recipes
 
 
@@ -263,7 +263,7 @@ def get_recipe_info(recipe_id):
     price_breakdown = get_recipe_price_breakdown(recipe_id)
     steps = get_steps(recipe_id)
     similar_recipes = get_similar_recipe(recipe_id)
-    
+
     recipe_info = {
         'nutrition': nutrition,
         'price_breakdown': price_breakdown,
@@ -272,21 +272,25 @@ def get_recipe_info(recipe_id):
     }
     return recipe_info
 
+
 def get_wine_pairing(food, maxPrice=None):
     """Find a wine that goes well with a food. 
     """
     url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/wine/pairing"
     querystring = {"food": food, "maxPrice": maxPrice}
     headers = {
-        "X-RapidAPI-Key": "8ce38d7e18msh20fe286a013a816p1dbda4jsn3e87d9768ab5",
+        "X-RapidAPI-Key": "17268cd20amsh963ba9a211d5552p19affdjsn8e9414b5b54b",
         "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
     }
-    response = requests.request("GET", url, headers=headers, params=querystring)
+    response = requests.request(
+        "GET", url, headers=headers, params=querystring)
     if response.status_code == 200:
         return response.json()
     else:
-        print(f"Error: Failed to get wine pairing. Status code: {response.status_code}")
+        print(
+            f"Error: Failed to get wine pairing. Status code: {response.status_code}")
         return None
+
 
 def get_wine_description(wine):
     """Get a simple description of a certain wine, e.g. "malbec", "riesling", or "merlot".
@@ -295,38 +299,64 @@ def get_wine_description(wine):
     url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/wine/description"
     querystring = {"wine": wine}
     headers = {
-        "X-RapidAPI-Key": "8ce38d7e18msh20fe286a013a816p1dbda4jsn3e87d9768ab5",
+        "X-RapidAPI-Key": "17268cd20amsh963ba9a211d5552p19affdjsn8e9414b5b54b",
         "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
     }
-    response = requests.request("GET", url, headers=headers, params=querystring)
+    response = requests.request(
+        "GET", url, headers=headers, params=querystring)
+    data = response.json()
     if response.status_code == 200:
-        return response.json()['wineDescription']
+        return data['wineDescription']
     else:
-        print(f"Error: Failed to get wine description. Status code: {response.status_code}")
+        print(
+            f"Error: Failed to get wine description. Status code: {response.status_code}")
         return None
+
+
+def get_wine_pairing_with_description(food, maxPrice=None):
+    """
+    Find a wine that goes well with a food and get a simple description of the wine.
+    Returns a string containing the names of the wine, pairing text, and its description.
+    """
+    wine_pairings = get_wine_pairing(food, maxPrice)
+    if wine_pairings is None:
+        return []
+    pairing_text = wine_pairings["pairingText"]
+    wines = []
+    for wine in wine_pairings["pairedWines"]:
+        description = get_wine_description(wine)
+        wines.append({"name": wine, "description": description})
+    result = {"pairing_text": pairing_text, "wines": wines}
+    return result
+
 
 def get_dish_pairing(wine):
     """Find a dish that goes well with a given wine."""
     endpoint = "food/wine/dishes"
     url = f"https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/{endpoint}"
     headers = {
-        "X-RapidAPI-Key": "8ce38d7e18msh20fe286a013a816p1dbda4jsn3e87d9768ab5",
+        "X-RapidAPI-Key": "17268cd20amsh963ba9a211d5552p19affdjsn8e9414b5b54b",
         "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
     }
-    params = {"wine": wine}
-    response = requests.get(url, headers=headers, params=params)
+    querystring = {"wine": wine}
+    response = requests.request(
+        "GET", url, headers=headers, params=querystring)
     if response.status_code == 200:
-        return response.json()
+        data = response.json()
+        dish = []
+        dish.append(
+            {'wine': wine, 'pairings': data['pairings'], 'text':  data['text']})
+        return dish
     else:
-        print(f"Error: Failed to get dish pairing. Status code: {response.status_code}")
+        print(
+            f"Error: Failed to get dish pairing. Status code: {response.status_code}")
         return None
 
-import requests
 
 def get_a_random_food_joke():
     url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/jokes/random"
     headers = {
-        "X-RapidAPI-Key": "8ce38d7e18msh20fe286a013a816p1dbda4jsn3e87d9768ab5",
+        "X-RapidAPI-Key": "17268cd20amsh963ba9a211d5552p19affdjsn8e9414b5b54b",
         "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
     }
     response = requests.request("GET", url, headers=headers)
@@ -345,7 +375,6 @@ def main():
     random_vegan_recipe = get_random_recipes(tags="vegan")
     # pprint(random_vegan_recipe)
 
-
     recipe_id = 720738  # Replace with your desired recipe ID
     nutrition_info = get_nutrition(recipe_id)
     price = get_recipe_price_breakdown(recipe_id)
@@ -356,23 +385,22 @@ def main():
     # pprint(price)
     # pprint(similar_recipe)
     # pprint(steps)
-    pprint(get_recipe_info(recipe_id))
+    # pprint(get_recipe_info(recipe_id))
 
     wine = "malbec"
     description = get_wine_description(wine)
-    if description:
-        print(f"Description of {wine}: {description}")
-    else:
-        print(f"Failed to get description of {wine}")
+    dish = get_dish_pairing(wine)
+    # pprint(description)
+    # pprint(dish)
 
     food = "steak"
-    pairing = get_wine_pairing(food)
-    print (pairing)
+    # pairing = get_wine_pairing(food)
+    wine = get_wine_pairing_with_description(food)
+    # print(wine)
 
-    
+    food_joke = get_a_random_food_joke()
+    # print(food_joke)
 
-    food_joke= get_a_random_food_joke()
-    print(food_joke)
 
 if __name__ == '__main__':
     main()

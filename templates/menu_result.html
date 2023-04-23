@@ -15,6 +15,7 @@
         <tr>
           <th>Recipe</th>
           <th>Ready In Minutes</th>
+          <th>From Which Restaurant</th>
         </tr>
       </thead>
       <tbody>
@@ -24,8 +25,7 @@
             <a href="/recipe/{{ result['id'] }}">{{ result['title'] }}</a>
           </td>
           <td>{{ result['readyInMinutes'] }}</td>
-          <td>{{ result['used_ingredients'] }}</td>
-          <td>{{ result['missed_ingredients'] }}</td>
+          <td>{{ result['restaurant_chain'] }}</td>
         </tr>
         {% endfor %}
       </tbody>
