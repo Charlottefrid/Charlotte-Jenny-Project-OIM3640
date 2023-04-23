@@ -271,7 +271,67 @@ def get_recipe_info(recipe_id):
         'similar_recipes': similar_recipes
     }
     return recipe_info
-    
+
+def get_wine_pairing(food, maxPrice=None):
+    """Find a wine that goes well with a food. 
+    """
+    url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/wine/pairing"
+    querystring = {"food": food, "maxPrice": maxPrice}
+    headers = {
+        "X-RapidAPI-Key": "8ce38d7e18msh20fe286a013a816p1dbda4jsn3e87d9768ab5",
+        "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
+    }
+    response = requests.request("GET", url, headers=headers, params=querystring)
+    if response.status_code == 200:
+        return response.json()
+    else:
+        print(f"Error: Failed to get wine pairing. Status code: {response.status_code}")
+        return None
+
+def get_wine_description(wine):
+    """Get a simple description of a certain wine, e.g. "malbec", "riesling", or "merlot".
+       Returns a string containing the wine's description, or None if the API call fails.
+    """
+    url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/wine/description"
+    querystring = {"wine": wine}
+    headers = {
+        "X-RapidAPI-Key": "8ce38d7e18msh20fe286a013a816p1dbda4jsn3e87d9768ab5",
+        "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
+    }
+    response = requests.request("GET", url, headers=headers, params=querystring)
+    if response.status_code == 200:
+        return response.json()['wineDescription']
+    else:
+        print(f"Error: Failed to get wine description. Status code: {response.status_code}")
+        return None
+
+def get_dish_pairing(wine):
+    """Find a dish that goes well with a given wine."""
+    endpoint = "food/wine/dishes"
+    url = f"https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/{endpoint}"
+    headers = {
+        "X-RapidAPI-Key": "8ce38d7e18msh20fe286a013a816p1dbda4jsn3e87d9768ab5",
+        "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
+    }
+    params = {"wine": wine}
+    response = requests.get(url, headers=headers, params=params)
+    if response.status_code == 200:
+        return response.json()
+    else:
+        print(f"Error: Failed to get dish pairing. Status code: {response.status_code}")
+        return None
+
+import requests
+
+def get_a_random_food_joke():
+    url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/jokes/random"
+    headers = {
+        "X-RapidAPI-Key": "8ce38d7e18msh20fe286a013a816p1dbda4jsn3e87d9768ab5",
+        "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
+    }
+    response = requests.request("GET", url, headers=headers)
+    return response.text
+
 
 def main():
     query = "burger"
@@ -286,11 +346,11 @@ def main():
     # pprint(random_vegan_recipe)
 
 
-    recipe_id = 720738  # Replace with your desired recipe ID
-    nutrition_info = get_nutrition(recipe_id)
-    price = get_recipe_price_breakdown(recipe_id)
-    similar_recipe = get_similar_recipe(recipe_id)
-    steps = get_steps(recipe_id)
+        recipe_id = 720738  # Replace with your desired recipe ID
+        nutrition_info = get_nutrition(recipe_id)
+        price = get_recipe_price_breakdown(recipe_id)
+        similar_recipe = get_similar_recipe(recipe_id)
+        steps = get_steps(recipe_id)
 
     # pprint(nutrition_info)
     # pprint(price)
@@ -298,6 +358,8 @@ def main():
     # pprint(steps)
     pprint(get_recipe_info(recipe_id))
 
+        food_joke= get_a_random_food_joke()
+        print(food_joke)
 
 if __name__ == '__main__':
     main()
