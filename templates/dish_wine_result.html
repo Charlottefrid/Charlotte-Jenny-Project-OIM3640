@@ -24,6 +24,7 @@
       h1 {
         color: #7b3e3e;
       }
+
     </style>
   </head>
 
@@ -36,7 +37,7 @@
       <h3>Dishes recommended:</h3>
       <ul>
         {% for dish in results[0]["pairings"] %}
-        <li>{{ dish }}</li>
+        <li>{{ dish.capitalize() }}</li>
         {% endfor %}
       </ul>
       {% else %}

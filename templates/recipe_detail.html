@@ -30,7 +30,7 @@
     </style>
   </head>
   <body>
-    <h1><span class="emoji">🍴</span>{{ recipe_info['steps']['title'] }}</h1>
+    <h1><span class="emoji">🍴</span>Recipe Details</h1>
     <h2><span class="emoji">🥦</span>Ingredients</h2>
 <ul>
   {% for ingredient in recipe_info['steps']['ingredient_names'] %}
@@ -83,8 +83,8 @@
 
 <h2><span class="emoji">🌟</span>Similar Recipes You Can Research ...</h2>
 <ul>
- 
-
-
+  {% for recipe in recipe_info['similar_recipes'] %}
+    <li>{{ recipe['title'] }}</li>
+  {% endfor %}
   </body>
 </html>

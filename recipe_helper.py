@@ -369,7 +369,7 @@ def main():
     # pprint(recipes1)
     ingredients = "beef, pepper"
     recipes2 = search_ingredients(ingredients)
-    # pprint(recipes2)
+    pprint(recipes2)
     recipe3 = get_restaurant_menu(query)
     # pprint(recipe3)
     random_vegan_recipe = get_random_recipes(tags="vegan")

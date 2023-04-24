@@ -49,17 +49,17 @@
             <tr>
                 <th>Recipe</th>
                 <th>Ready In Minutes</th>
-                <th>Used Ingredients</th>
-                <th>Missing Ingredients</th>
             </tr>
         </thead>
         <tbody>
             {% for result in results %}
             <tr>
                 <td><a href="/recipe/{{ result['id'] }}">{{ result['title'] }}</a></td>
-                <td>{{ result['readyInMinutes'] }}</td>
-                <td>{{ result['used_ingredients'] }}</td>
-                <td>{{ result['missed_ingredients'] }}</td>
+                {% if result['readyInMinutes'] %}
+                <td>{{ result['readyInMinutes'] }} min</td>
+                {% else %}
+                <td>-</td>
+                {% endif %}
             </tr>
             {% endfor %}
         </tbody>

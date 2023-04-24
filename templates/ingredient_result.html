@@ -71,9 +71,23 @@
             {% for result in results %}
             <tr>
                 <td><a href="/recipe/{{ result['id'] }}">{{ result['title'] }}</a></td>
-                <td>{{ result['readyInMinutes'] }} Minutes</td>
-                <td>{{ result['used_ingredients'] }}</td>
-                <td>{{ result['missed_ingredients'] }}</td>
+                {% if result['readyInMinutes'] %}
+                <td>{{ result['readyInMinutes'] }} min</td>
+                {% else %}
+                <td>-</td>
+                {% endif %}
+    
+                <td>
+                    {% for ingredient in result['used_ingredients'] %}
+                      <li>{{ ingredient.capitalize() }}</li>
+                    {% endfor %}
+                  </td>
+                  <td>
+                    {% for ingredient in result['missed_ingredients'] %}
+                      <li>{{ ingredient.capitalize()  }}</li>
+                    {% endfor %}
+                  </td>
+                
             </tr>
             {% endfor %}
         </tbody>
