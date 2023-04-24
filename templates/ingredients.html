@@ -5,13 +5,105 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Amazing app to help you find recipes you like</title>
+    <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Castoro+Titling|Open+Sans">
+    <style>
+      body {
+        background-image: url("https://nypost.com/wp-content/uploads/sites/2/2021/11/Food-feature.jpg?resize=1064,709&quality=75&strip=all");
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+  
+      h1 {
+        font-size: 2.5rem;
+        text-align: center;
+        margin: 2rem 0 1rem 0;
+        text-transform: uppercase;
+        font-family: 'DM Serif Display', serif;
+        font-weight: bold;
+        color: darkolivegreen;
+      }
+
+      p {
+        margin: 1rem 0;
+        font-size: 1.2rem;
+        font-family: 'Calibri', sans-serif;
+      }
+
+      .emoji {
+        font-size: 1.5rem;
+        margin-right: 0.5rem;
+      }
+  
+      form {
+        background: #fff;
+        max-width: 700px;
+        margin: 3rem auto;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+        position: relative;
+      }
+  
+      form::before {
+        content: '';
+        position: absolute;
+        top: -20px;
+        left: -20px;
+        height: 40px;
+        width: 40px;
+        background: url('https://nypost.com/wp-content/uploads/sites/2/2021/11/Food-feature.jpg?resize=1064,709&quality=75&strip=all') no-repeat center center/cover;
+        border-radius: 50%;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+      }
+  
+      input[type="text"] {
+        padding: 10px;
+        font-size: 1.2rem;
+        border-radius: 20px;
+        border: none;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+        width: 80%;
+        margin-bottom: 1rem;
+      }
+  
+      input[type="submit"] {
+        display: block;
+        background: #ff704d;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 20px;
+        font-size: 1.2rem;
+        margin: 1rem auto;
+        cursor: pointer;
+        transition: background 0.3s ease-in-out;
+      }
+  
+      input[type="submit"]:hover {
+        background: #ff5e35;
+      }
+  
+      @media screen and (max-width: 768px) {
+        form {
+          padding: 1rem;
+        }
+  
+        input[type="text"] {
+          width: 100%;
+        }
+      }
+    </style>
+
   </head>
 
   <body>
-    <h1>Recipe Search</h1>
-    <form method="POST" name="ingredients_recipes">
+    <h1><span class="emoji">🍴</span>Recipe Search</h1>
+    <div class="search-box">
+      <form method="POST" name="ingredients_recipes">
       <p>
-        Welcome to our Recipe Searching engine! If you're looking for recipe
+        Welcome to our Recipe Searching engine!🍴🔍 If you're looking for recipe
         inspiration and want to make use of the ingredients you have on hand,
         you've come to the right place. Simply enter all the ingredients you
         have now, and we'll provide you with a range of recipes that use those
@@ -24,17 +116,11 @@
       {% if error %}
       <p style="color: red">There is no recipe can be found.</p>
       {% endif %}
-      <p>Please enter your ingredients, seperated by commas</p>
+      <p>Please enter your ingredients, separated by commas</p>
       <p>
         <input
           type="text"
           name="ingredients_recipes"
-          placeholder="What recipe are you looking for?"
+          placeholder="E.g. chicken, tomato, garlic"
         />
-      </p>
       <p>
-        <input type="submit" name="" value="Search" />
-      </p>
-    </form>
-  </body>
-</html>

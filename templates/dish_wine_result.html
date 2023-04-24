@@ -5,21 +5,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Amazing app to help you find recipes you like</title>
+    <style>
+      body {
+        background-image: url('https://images.pexels.com/photos/8350183/pexels-photo-8350183.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+
+      .transparent-box {
+        background-color: rgba(255, 255, 255, 0.5);
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        padding: 20px;
+        max-width: 750px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        color: #7b3e3e;
+      }
+    </style>
   </head>
 
   <body>
-    <h1>Get Dish Pairing for Your Wines!</h1>
-    {% if results %}
-    <p>{{ results[0]["text"] }}</p>
-    {% if results[0]["pairings"] %}
-    <h3>Dishes recommended:</h3>
-    <ul>
-      {% for dish in results[0]["pairings"] %}
-      <li>{{ dish }}</li>
-      {% endfor %}
-    </ul>
-    {% else %}
-    <p>No dish pairings found for {{ results[0]["wine"] }}.</p>
-    {% endif %} {% endif %}
+    <div class="transparent-box">
+      <h1>Get Dish Pairing for Your Wines!</h1>
+      {% if results %}
+      <p>{{ results[0]["text"] }}</p>
+      {% if results[0]["pairings"] %}
+      <h3>Dishes recommended:</h3>
+      <ul>
+        {% for dish in results[0]["pairings"] %}
+        <li>{{ dish }}</li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p>No dish pairings found for {{ results[0]["wine"] }}.</p>
+      {% endif %} {% endif %}
+    </div>
   </body>
 </html>

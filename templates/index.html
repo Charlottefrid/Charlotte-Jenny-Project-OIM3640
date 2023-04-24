@@ -5,40 +5,97 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Amazing app to help you find recipes you like</title>
+    <style>
+      html {
+        background-color: #fff;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .header {
+        background-color: #ffe4c4;
+        padding: 20px;
+        text-align: center;
+      }
+      .btn {
+        background-color: #ffc107;
+        border: none;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 8px;
+      }
+      .btn:hover {
+        background-color: #ff8c00;
+      }
+      .joke-box {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 999;
+        border: 2px solid #ffc107;
+        background-color: #ffe4c4;
+        padding: 20px;
+        border-radius: 8px;
+        animation: slide-in 0.5s ease-out;
+        animation-delay: 2s;
+        animation-fill-mode: forwards;
+        opacity: 0;
+      }
+      .joke-box p {
+        margin: 0;
+      }
+      .joke-box h3 {
+        margin-top: 0;
+      }
+      @keyframes slide-in {
+        0% {
+          transform: translateY(-200px);
+          opacity: 0;
+        }
+        100% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+    </style>
   </head>
 
   <body>
-    <h1>Welcome to Charlotte and Jenny's Food Web App</h1>
-    <p>
-      Welcome to our incredible Web App, which provides a variety of
-      food-related features to satiate your culinary needs! We've got you
-      covered, whether you're looking for recipes based on keywords or
-      ingredients, restaurant menus, or random recipes for inspiration. If you
-      are interested in wine and cuisine pairing, we can also assist you. So
-      that you can impress your visitors with the perfect pairing, our app also
-      provides wine recommendations for dishes and dish recommendations for
-      wines. With so many options available, we are confident that you will find
-      something to satiate your appetite. Choose your favourite feature and
-      begin your exploration!
-    </p>
-    <p>Please select one of the following options:</p>
-    <ul>
-      <li><a href="{{url_for('recipes')}}">Search Recipes by Keywords</a></li>
-      <li>
-        <a href="{{url_for('ingredients_recipes')}}"
-          >Search Recipes by Ingredients</a
-        >
-      </li>
-      <li><a href="{{url_for('menus')}}">Search Restaurant Menus</a></li>
-      <li><a href="{{url_for('random')}}">Get Random Recipes</a></li>
-      <li>
-        <a href="{{url_for('wine')}}">Get Wine Recommendations for Dishes</a>
-      </li>
-      <li>
-        <a href="{{url_for('dish')}}">Get Dish Recommendations for Wines</a>
-      </li>
-    </ul>
-    <h3>A little joke to start your day ^^</h3>
-    <p>{{ joke['text'] }}</p>
-  </body>
-</html>
+    <div class="header">
+      <h1>Welcome to Charlotte and Jenny's Food Web App👨‍🍳👩‍🍳</h1>
+      <p>
+        Welcome to our incredible Web App, which provides a variety of
+        food-related features to satiate your culinary needs! We've got you
+        covered💪, whether you're looking for recipes based on keywords or
+        ingredients, restaurant menus, or random recipes for inspiration. If you
+        are interested in wine and cuisine pairing, we can also assist you. So
+        that you can impress your visitors with the perfect pairing, our app also
+        provides wine recommendations for dishes and dish recommendations for
+        wines. With so many options available, we are confident that you will find
+        something to satiate your appetite. Choose your favourite feature and
+        begin your exploration!🥘🍲🌮🍛🍜🍩🍷🍘
+      </p>
+      </p>
+      <p>Please select one of the following options:</p>
+      <ul>
+        <li><a href="{{url_for('recipes')}}" class="btn">Search Recipes by Keywords</a></li>
+        <li><a href="{{url_for('ingredients_recipes')}}" class="btn">Search Recipes by Ingredients</a></li>
+        <li><a href="{{url_for('menus')}}" class="btn">Search Restaurant Menus</a></li>
+        <li><a href="{{url_for('random')}}" class="btn">Get Random Recipes</a></li>
+        <li><a href="{{url_for('wine')}}" class="btn" style="background-color: #ff69b4;">Get Wine Recommendations for Dishes</a></li>
+        <li><a href="{{url_for('dish')}}" class="btn" style="background-color: #9370db;">Get Dish Recommendations for Wines</a></li>
+      </ul>
+    </div>
+    <div class="joke-box">
+      <h3>🤪A little joke to start your day 🤣</h3>
+      <p>{{ joke['text'] }}</p>
+    </body>
+  </html>

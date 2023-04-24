@@ -4,33 +4,101 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Amazing app to help you find recipes you like</title>
+    <title>Wine Pairing Recommendation Engine</title>
+    <style>
+      body {
+        background-image: url("https://static.cdn.packhelp.com/wp-content/uploads/2019/04/06153744/scott-warman-525484-unsplash.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        font-family: Arial, sans-serif;
+        color: #ffffff;
+        margin: 0;
+        padding: 0;
+      }
+
+      #header {
+        padding: 50px;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+
+      h1 {
+        font-size: 48px;
+        margin: 0;
+        padding: 0;
+      }
+
+      #form-container {
+        width: 60%;
+        margin: 0 auto;
+        padding: 30px;
+        background-color: rgba(255, 255, 255, 0.8);
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      form {
+        text-align: center;
+      }
+
+      input[type="text"] {
+        width: 70%;
+        padding: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-size: 18px;
+        border: none;
+        border-radius: 5px;
+      }
+
+      input[type="submit"] {
+        background-color: #d2691e;
+        color: #ffffff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 18px;
+        cursor: pointer;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #a0522d;
+      }
+
+      p.error {
+        color: #ff0000;
+      }
+
+      p {
+        color: white;
+      }
+    </style>
   </head>
 
   <body>
-    <h1>Get Wine Pairing for Your Dishes!</h1>
-    <form method="POST" name="wine">
+    <div id="header">
+      <h1>Wine Pairing Recommendation Engine</h1>
       <p>
-        Hello! Welcome to our Wine Pairing Recommendation Engine! With our
-        engine, you can easily find a wine that pairs perfectly with your
-        favorite dishes or ingredients. Simply enter the name of a dish,
-        ingredient, or cuisine, and our engine will provide you with a list of
-        recommended wines to complement your meal.
+        Welcome to our Wine Pairing Recommendation Engine! With our engine, you
+        can easily find a wine that pairs perfectly with your favorite dishes or
+        ingredients. Simply enter the name of a dish, ingredient, or cuisine,
+        and our engine will provide you with a list of recommended wines to
+        complement your meal.
       </p>
-      {% if error %}
-      <p style="color: red">There is no wine can be paired.</p>
-      {% endif %}
-      <p>Please enter the dish/ingredient/cuisine you want to pair with!</p>
-      <p>
-        <input
-          type="text"
-          name="wine"
-          placeholder="What dish are you pairing?"
-        />
-      </p>
-      <p>
-        <input type="submit" name="" value="Search" />
-      </p>
-    </form>
+    </div>
+    <div id="form-container">
+      <form method="POST" name="wine">
+        <p style="color: black; font-size: 24px; font-family: 'Castoro Titling', sans-serif;">Please enter the dish/ingredient/cuisine you want to pair with:</p>
+        <p>
+          <input type="text" name="wine" placeholder="E.g. salmon, pasta, Thai food" />
+        </p>
+        <p>
+          <input type="submit" value="Find Wine" />
+        </p>
+        {% if error %}
+        <p class="error">Sorry, there is no wine that can be paired with your selection.</p>
+        {% endif %}
+      </form>
+    </div>
   </body>
 </html>

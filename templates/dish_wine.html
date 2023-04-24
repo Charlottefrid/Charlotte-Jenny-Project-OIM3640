@@ -5,36 +5,81 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Amazing app to help you find recipes you like</title>
+    <style>
+      body {
+        background-image: url('https://images.squarespace-cdn.com/content/v1/54b59944e4b098c8354feafa/1664400479101-RPKYT2NSDQ91VI8VY654/sommi-bradford-cellar-photo-04+copy.jpg?format=1500w');
+        background-size: cover;
+      }
+      .transparent-box {
+        background-color: rgba(255, 255, 255, 0.7);
+        padding: 30px;
+        margin: 50px;
+        border-radius: 10px;
+      }
+      h1 {
+        margin-top: 100px;
+        font-size: 3.5em;
+        text-align: center;
+        color: white;
+      }
+      form {
+        text-align: center;
+        font-size: 1em;
+        color: black;
+      }
+      input[type='text'] {
+        font-size: 1em;
+        padding: 10px;
+        border-radius: 10px;
+        border: none;
+        box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.3);
+        width: 50%;
+      }
+      input[type='submit'] {
+        font-size: 1em;
+        padding: 10px;
+        border-radius: 10px;
+        border: none;
+        background-color: #cc0033;
+        color: white;
+        cursor: pointer;
+      }
+      input[type='submit']:hover {
+        background-color: #990022;
+      }
+    </style>
   </head>
 
   <body>
     <h1>Get Dish Pairing for Your Wines!</h1>
-    <form method="POST" name="dish">
-      <p>
-        Hello! Welcome to our Dish Pairing Recommendation Engine! Whether you're
-        a wine enthusiast or just enjoy a glass every now and then, our search
-        engine is here to help you find the perfect dish to pair with your
-        favorite wine. Simply enter the name of the wine you have on hand, and
-        we will provide you with tailored dish recommendations based on the
-        wine's unique characteristics. With our easy-to-use interface and
-        extensive database of wines and dishes, you'll be sure to find the
-        perfect pairing for your next meal. So why wait? Start exploring today
-        and take your wine and dining experience to the next level!
-      </p>
-      {% if error %}
-      <p style="color: red">There is no recipe can be paired.</p>
-      {% endif %}
-      <p>Please enter the wine you want to pair with!</p>
-      <p>
-        <input
-          type="text"
-          name="dish"
-          placeholder="What wine are you pairing?"
-        />
-      </p>
-      <p>
-        <input type="submit" name="" value="Search" />
-      </p>
-    </form>
+    <div class="transparent-box">
+      <form method="POST" name="dish">
+        <p>
+          Hello! Welcome to our Dish Pairing Recommendation Engine! Whether
+          you're a wine enthusiast or just enjoy a glass every now and then,
+          our search engine is here to help you find the perfect dish to pair
+          with your favorite wine. Simply enter the name of the wine you have on
+          hand, and we will provide you with tailored dish recommendations based
+          on the wine's unique characteristics. With our easy-to-use interface
+          and extensive database of wines and dishes, you'll be sure to find the
+          perfect pairing for your next meal. So why wait? Start exploring today
+          and take your wine and dining experience to the next level!
+        </p>
+        {% if error %}
+        <p style="color: red">There is no recipe can be paired.</p>
+        {% endif %}
+        <p>Please enter the wine you want to pair with!</p>
+        <p>
+          <input
+            type="text"
+            name="dish"
+            placeholder="What wine are you pairing?"
+          />
+        </p>
+        <p>
+          <input type="submit" name="" value="Search" />
+        </p>
+      </form>
+    </div>
   </body>
 </html>

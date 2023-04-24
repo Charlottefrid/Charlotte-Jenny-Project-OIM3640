@@ -5,11 +5,86 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Amazing app to help you find recipes you like</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Cubano|Cubano:sharp"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-image: url(https://s.hdnux.com/photos/01/22/26/05/21586276/3/2300x0.jpg);
+        background-size: cover;
+        background-position: center;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+      }
+
+      h1 {
+        font-family: 'Cubano Sharp', sans-serif;
+        font-size: 60px;
+        margin: 60px 0 20px;
+        text-align: center;
+        color: #ffffff;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      form {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 30px;
+        background-color: rgba(255, 255, 255, 0.7);
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        margin-top: 50px;
+      }
+
+      input[type="text"] {
+        width: 100%;
+        padding: 12px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+      }
+
+      input[type="submit"] {
+        background-color: #a68f6f;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #8e7657;
+      }
+
+      p {
+        margin-bottom: 20px;
+        font-size: 14px;
+      }
+
+      .container {
+        margin-top: 100px;
+      }
+
+      .transparent-box {
+        background-color: rgba(255, 255, 255, 0.7);
+        padding: 30px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+      }
+    </style>
   </head>
 
   <body>
-    <h1>Restaurant Renu Generator</h1>
-    <form method="POST" name="menus">
+    <h1>Restaurants Everywhere All At Once</h1>
+    <div class="container">
+      <form method="POST" name="menus">
       <p>
         Hello! Welcome to our exclusive Restaurant Renu Generator! If you're
         looking for something truly unique and special for your next dining
@@ -24,16 +99,12 @@
       <p style="color: red">There is no recipe can be found.</p>
       {% endif %}
       <p>Please enter the keywords of the recipe</p>
-      <p>
-        <input
-          type="text"
-          name="menus"
-          placeholder="What menu are you looking for?"
-        />
-      </p>
-      <p>
-        <input type="submit" name="" value="Search" />
-      </p>
+      <input
+        type="text"
+        name="menus"
+        placeholder="What menu are you looking for?"
+      />
+      <input type="submit" name="" value="Search" />
     </form>
   </body>
 </html>

@@ -2,65 +2,89 @@
 <html>
   <head>
     <title>{{ recipe_info['steps']['title'] }}</title>
+    <style>
+      body {
+        background-color: #f6eee1;
+      }
+      h1 {
+        font-size: 36px;
+        text-align: center;
+        margin-top: 40px;
+      }
+      h2 {
+        font-size: 28px;
+        margin-top: 20px;
+      }
+      li {
+        font-size: 24px;
+        margin-top: 10px;
+      }
+      p {
+        font-size: 24px;
+        margin-top: 20px;
+      }
+      .emoji {
+        font-size: 28px;
+        margin-right: 10px;
+      }
+    </style>
   </head>
   <body>
-    <h1>{{ recipe_info['steps']['title'] }}</h1>
+    <h1><span class="emoji">🍴</span>{{ recipe_info['steps']['title'] }}</h1>
+    <h2><span class="emoji">🥦</span>Ingredients</h2>
+<ul>
+  {% for ingredient in recipe_info['steps']['ingredient_names'] %}
+  <li>{{ ingredient.capitalize() }}</li>
+  {% endfor %}
+</ul>
 
-    <h2>Ingredients</h2>
-    <ul>
-      {% for ingredient in recipe_info['steps']['ingredient_names'] %}
-      <li>{{ ingredient.capitalize() }}</li>
-      {% endfor %}
-    </ul>
+<h2><span class="emoji">🧰</span>Equipments</h2>
+<ul>
+  {% for equipment in recipe_info['steps']['equipment_names'] %}
+  <li>{{ equipment.capitalize() }}</li>
+  {% endfor %}
+</ul>
 
-    <h2>Equipments</h2>
-    <ul>
-      {% for equipment in recipe_info['steps']['equipment_names'] %}
-      <li>{{ equipment.capitalize() }}</li>
-      {% endfor %}
-    </ul>
+<h2><span class="emoji">👩‍🍳</span>Steps</h2>
+<ul>
+  {% for step in recipe_info['steps']['steps']%}
+  <p>{{ step }}</p>
+  {% endfor %}
+</ul>
 
-    <h2>Steps</h2>
-    <ul>
-      {% for step in recipe_info['steps']['steps']%}
-      <p>{{ step }}</p>
-      {% endfor %}
-    </ul>
+<h2><span class="emoji">🥗</span>Nutrition</h2>
+<ul>
+  <li>
+    <span class="emoji">🔥</span>Calories: {{ recipe_info['nutrition']['Calories']['amount'] }} Cal
+  </li>
+  <li>
+    <span class="emoji">🧈</span>Fat: {{ recipe_info['nutrition']['Fat']['amount'] }} g OR
+    {{recipe_info['nutrition']['Fat']['percent_of_daily_needs']}} % of daily
+    needs
+  </li>
+  <li>
+    <span class="emoji">🍗</span>Protein: {{ recipe_info['nutrition']['Protein']['amount'] }} g OR
+    {{recipe_info['nutrition']['Protein']['percent_of_daily_needs']}} % of
+    daily needs
+  </li>
+  <li>
+    <span class="emoji">🍚</span>Carbohydrates: {{ recipe_info['nutrition']['Carbohydrates']['amount'] }}
+    g OR
+    {{recipe_info['nutrition']['Carbohydrates']['percent_of_daily_needs']}}
+    % of daily needs
+  </li>
+</ul>
 
-    <h2>Nutrition</h2>
-    <ul>
-      <li>
-        Calories: {{ recipe_info['nutrition']['Calories']['amount'] }} Cal
-      </li>
-      <li>
-        Fat: {{ recipe_info['nutrition']['Fat']['amount'] }} g OR
-        {{recipe_info['nutrition']['Fat']['percent_of_daily_needs']}} % of daily
-        needs
-      </li>
-      <li>
-        Protein: {{ recipe_info['nutrition']['Protein']['amount'] }} g OR
-        {{recipe_info['nutrition']['Protein']['percent_of_daily_needs']}} % of
-        daily needs
-      </li>
-      <li>
-        Carbohydrates: {{ recipe_info['nutrition']['Carbohydrates']['amount'] }}
-        g OR
-        {{recipe_info['nutrition']['Carbohydrates']['percent_of_daily_needs']}}
-        % of daily needs
-      </li>
-    </ul>
+<h2><span class="emoji">💰</span>Price</h2>
+<ul>
+  <li><span class="emoji">💸</span>Total Cost - $ {{ recipe_info['price_breakdown'][0] }}</li>
+  <li><span class="emoji">💰</span>Cost Per Serving - $ {{ recipe_info['price_breakdown'][1] }}</li>
+</ul>
 
-    <h2>Price</h2>
-    <ul>
-      <li>Total Cost - $ {{ recipe_info['price_breakdown'][0] }}</li>
-      <li>Cost Per Serving - $ {{ recipe_info['price_breakdown'][1] }}</li>
-    </ul>
+<h2><span class="emoji">🌟</span>Similar Recipes You Can Research ...</h2>
+<ul>
+ 
 
-    <h2>Similar Recipes You Can Research ...</h2>
-    <ul>
-      {% for recipe in recipe_info['similar_recipes'] %}
-      <li>{{ recipe['title'] }}</li>
-      {% endfor %}
-    </ul>
+
   </body>
 </html>

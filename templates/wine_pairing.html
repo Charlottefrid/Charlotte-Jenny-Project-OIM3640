@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wine Pairing</title>
+</head>
+<body>
+    {% if wine %}
+        <h1>Recommended Wine:</h1>
+        <p>{{ wine }}</p>
+    {% else %}
+        <h1>No Wine Found</h1>
+    {% endif %}
+</body>
+</html>

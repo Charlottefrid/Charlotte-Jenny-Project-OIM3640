@@ -4,13 +4,101 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Amazing app to help you find recipes you like</title>
+    <title>Recipe Search</title>
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Indie+Flower">
+    <style>
+      body {
+        background-image: url("https://images.pexels.com/photos/2635038/pexels-photo-2635038.jpeg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        font-family: Arial, sans-serif;
+      }
+  
+      h1 {
+        font-size: 2.5rem;
+        text-align: center;
+        margin: 2rem 0 1rem 0;
+        text-transform: uppercase;
+        font-family: 'DM Serif Display', serif;
+        font-weight: bold;
+        color: rgb(58, 46, 7);
+      }
+  
+      form {
+        background: #fff;
+        max-width: 700px;
+        margin: 3rem auto;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+        position: relative;
+      }
+  
+      form::before {
+        content: '';
+        position: absolute;
+        top: -20px;
+        left: -20px;
+        height: 40px;
+        width: 40px;
+        background: url('https://cdn.pixabay.com/photo/2016/11/29/08/08/food-1860030_960_720.jpg') no-repeat center center/cover;
+        border-radius: 50%;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+      }
+  
+      p {
+        margin: 1rem 0;
+        font-family: Arial, sans-serif;
+      }
+  
+      input[type="text"] {
+        padding: 10px;
+        font-size: 1.5rem;
+        border-radius: 20px;
+        border: none;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+        width: 60%;
+        height: 10px;
+        margin-bottom: 1rem;
+      }
+  
+      input[type="submit"] {
+        display: block;
+        background: #ff704d;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 20px;
+        font-size: 1.2rem;
+        margin: 1rem auto;
+        cursor: pointer;
+        transition: background 0.3s ease-in-out;
+      }
+  
+      input[type="submit"]:hover {
+        background: #ff5e35;
+      }
+  
+      @media screen and (max-width: 768px) {
+        form {
+          padding: 1rem;
+        }
+  
+        input[type="text"] {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+
+
   </head>
 
   <body>
-    <h1>Recipe Search</h1>
+    <h1>Recipe Search🍝</h1>
     <form method="POST" name="Recipe">
-      <p>
+      <p style="font-family: Pacifico; font-size: 1.5rem; color: #f08080;"></p>
         Welcome to our Recipe Searching engine! Whether you're a seasoned cook
         or just starting out in the kitchen, we're here to help you find the
         perfect recipe for any occasion. Simply enter a keyword related to the
@@ -18,22 +106,34 @@
         searching results to choose from. From quick and easy weeknight dinners
         to show-stopping desserts, our engine is your one-stop-shop for all your
         culinary needs. So go ahead, start your search now and discover your
-        next favorite dish!
+        next favorite dish🍴👨‍🍳👩‍🍳!
       </p>
       {% if error %}
       <p style="color: red">There is no recipe can be found.</p>
       {% endif %}
-      <p>Please enter the keywords of the recipe</p>
+      <p>Please enter the keywords of the recipe 📝</p>
       <p>
         <input
           type="text"
           name="recipe"
           placeholder="What recipe are you looking for?"
+          style="font-size: 1rem; padding: 8px;"
         />
       </p>
       <p>
-        <input type="submit" name="" value="Search" />
+        <input type="submit" name="" value="Search🔍" />
       </p>
     </form>
+    <img
+    src="https://images.unsplash.com/photo-1520453803292-37829d3d3c2e"
+    alt="food image"
+    style="
+      display: block;
+      margin: 0 auto;
+      width: 80%;
+      max-width: 800px;
+      margin-top: 50px;
+    "
+  />
   </body>
 </html>
