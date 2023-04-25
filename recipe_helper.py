@@ -23,6 +23,7 @@ def search_recipes(query):
     response = requests.request(
         "GET", url, headers=headers, params=querystring)
 
+    # id, title and ready in minutes
     if response.status_code == 200:
         data = response.json()["results"]
         recipes = []
@@ -56,6 +57,8 @@ def search_ingredients(ingredients):
 
     response = requests.request(
         "GET", url, headers=headers, params=querystring)
+
+    # title, used/missed ingredients, call the search_recipe() to add the features
     data = response.json()
     recipes = []
     for recipe in data:
@@ -96,7 +99,10 @@ def get_restaurant_menu(query):
 
     response = requests.request(
         "GET", url, headers=headers, params=querystring)
+
     data = response.json()
+
+    # title, restaurant name, call the search_recipe() to add the features
 
     if len(data["menuItems"]) == 0:
         return "No recipe found"
@@ -129,6 +135,8 @@ def get_random_recipes(tags=""):
     response = requests.request(
         "GET", url, headers=headers, params=querystring)
     data = response.json()
+
+    # call the search_recipe() to add the features
     recipes = []
     for recipe in data["recipes"]:
         title = recipe["title"]
@@ -152,6 +160,8 @@ def get_nutrition(recipe_id):
     }
 
     response = requests.request("GET", url, headers=headers)
+
+    # nutrients including calories, carb, protein, and fat
 
     if response.status_code == 200:
         data = response.json()
@@ -178,6 +188,9 @@ def get_recipe_price_breakdown(recipe_id):
         "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
     }
     response = requests.request("GET", url, headers=headers)
+
+    # total cost/ per serving
+
     if response.status_code == 200:
         data = response.json()
         total_cost = data["totalCost"]
@@ -242,6 +255,7 @@ def get_similar_recipe(recipe_id):
     similar_response = requests.request("GET", similar_url, headers=headers)
     data = similar_response.json()
 
+    # similar recipes names
     # Recipe ID not found
     if similar_response.status_code == 404:
         return None
@@ -259,6 +273,8 @@ def get_recipe_info(recipe_id):
     """
     Given the recipe id, return nutrition, price breakdown, steps, and similar recipes.
     """
+    # combine all the features together
+    # details for every recipe
     nutrition = get_nutrition(recipe_id)
     price_breakdown = get_recipe_price_breakdown(recipe_id)
     steps = get_steps(recipe_id)
@@ -284,6 +300,7 @@ def get_wine_pairing(food, maxPrice=None):
     }
     response = requests.request(
         "GET", url, headers=headers, params=querystring)
+    # wine name and general description
     if response.status_code == 200:
         return response.json()
     else:
@@ -305,6 +322,7 @@ def get_wine_description(wine):
     response = requests.request(
         "GET", url, headers=headers, params=querystring)
     data = response.json()
+    # description for each wine
     if response.status_code == 200:
         return data['wineDescription']
     else:
@@ -318,6 +336,8 @@ def get_wine_pairing_with_description(food, maxPrice=None):
     Find a wine that goes well with a food and get a simple description of the wine.
     Returns a string containing the names of the wine, pairing text, and its description.
     """
+    # combine the wine description to the wine pairing
+    # wine name, description for each and one paragraph of general description
     wine_pairings = get_wine_pairing(food, maxPrice)
     if wine_pairings is None:
         return []
@@ -341,6 +361,7 @@ def get_dish_pairing(wine):
     querystring = {"wine": wine}
     response = requests.request(
         "GET", url, headers=headers, params=querystring)
+    # description and dish name
     if response.status_code == 200:
         data = response.json()
         dish = []
