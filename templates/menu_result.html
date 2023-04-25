@@ -79,7 +79,11 @@
           <td>
             <a href="/recipe/{{ result['id'] }}">{{ result['title'] }}</a>
           </td>
-          <td>{{ result['readyInMinutes'] }}</td>
+        {% if result['readyInMinutes'] %}
+          <td>{{ result['readyInMinutes'] }} min</td>
+        {% else %}
+          <td>-</td>
+        {% endif %}
           <td>{{ result['restaurant_chain'] }}</td>
         </tr>
         {% endfor %}

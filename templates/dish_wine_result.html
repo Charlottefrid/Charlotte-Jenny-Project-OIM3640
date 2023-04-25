@@ -29,6 +29,7 @@
         color: white;
         font-size: 1.2em;
       }
+
     </style>
   </head>
 
@@ -41,7 +42,7 @@
       <h3>Dishes recommended:</h3>
       <ul>
         {% for dish in results[0]["pairings"] %}
-        <li>{{ dish }}</li>
+        <li>{{ dish.capitalize() }}</li>
         {% endfor %}
       </ul>
       {% else %}
