@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 # Charlotte Jenny Project OIM3640
  This is a repository for Charlotte Chen and Jenny Ma's Final Project for OIM 3640. 
 
@@ -59,4 +57,3 @@ O ur app has many functions: including chatbot, search engine according to categ
  One very useful Course Content will be Natural Language Processing, which will tokenize the users' input, delete stop words, meaningless words, repetitive words.etc. Some popular NLP libraries that you can use in Python include NLTK, spaCy, and TextBlob.
 
  We also need Chatterbot Library that provides an easy way to generate automated responses to user inputs and a corpus, which is a collection of data used to train the chatterbot.
->>>>>>> Stashed changes

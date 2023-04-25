@@ -3,7 +3,7 @@
 
 ## 1. The Big Idea
 
-This project's primary objective is to provide various recipes from our enriched database based on raw materials, while enable the users to get access to the ingredients, equipments,  instructions, time-needed, nutrition info, similar recipes and wine recommendation. It will even povide a daily joke for you related to food!
+This project's primary objective is to provide various recipes from our enriched database based on raw materials, while enable the users to get access to the ingredients, equipments, instructions, time-needed, nutrition info, similar recipes and wine recommendation. It will even povide a daily joke for you related to food!
 
 The ultimate recipe app is designed specifically for college students and busy employees who are not experienced with culinary and want to try out new recipes. Through searching manually, users will be able to generate random recipes or  search for recipes/restaurant menus through using keywords or ingredients, and create total price, price/serving, instructions, cooking time, wine recommendation, etc. on the minimum viable product (MVP). To develop the MVP, we will utilize existing APIs for recipes. The stretch goal is to create a web app that allows users to input the food they are craving and choose their recipe.
 
