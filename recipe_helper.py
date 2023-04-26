@@ -6,20 +6,17 @@ def search_recipes(query):
     """
     Given query strings (keyword of recipes), return 10 related recipes, including the corresponding ID, title, and cooking time.
     """
-
+    # From API 
     url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search"
-
     querystring = {
         "query": query,
         "number": "30",
         "instructionsRequired": "true"
     }
-
     headers = {
         "X-RapidAPI-Key": "17268cd20amsh963ba9a211d5552p19affdjsn8e9414b5b54b",
         "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
     }
-
     response = requests.request(
         "GET", url, headers=headers, params=querystring)
 
