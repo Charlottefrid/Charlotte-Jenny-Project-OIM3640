@@ -32,7 +32,7 @@ Our app has many functions: including search engine according to keywords/ingred
 2. Urllib.request: to send HTTP requests to APIs and retrieve data
 3. PPrint 
 
-To see more detailed explanation for our finished codes, and how to implement the code on your end, refer to our [webpage](https://sites.google.com/babson.edu/wonderful-food-web-app/developers-notes)!
+To see more detailed explanation for our finished codes, and how to implement the codes on your end, refer to our [project website](https://sites.google.com/babson.edu/wonderful-food-web-app/developers-notes)!
 
 
 ## 4. Project Schedule
