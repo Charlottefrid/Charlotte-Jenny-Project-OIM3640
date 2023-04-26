@@ -1,5 +1,5 @@
 # Charlotte Jenny Project OIM3640
- This is a repository for [Charlotte and Jenny's Wonderful Food Web App](https://sites.google.com/babson.edu/wonderful-food-web-app/developers-notes)
+ This is a repository for [Charlotte and Jenny's Wonderful Food Web App](https://sites.google.com/babson.edu/wonderful-food-web-app/home)
 
 ## 1. The Big Idea
 
