@@ -1,5 +1,5 @@
 # Charlotte Jenny Project OIM3640
- This is a repository for Charlotte and Jenny's Wonderful Food Web App
+ This is a repository for [Charlotte and Jenny's Wonderful Food Web App](https://sites.google.com/babson.edu/wonderful-food-web-app/developers-notes)
 
 ## 1. The Big Idea
 
@@ -30,6 +30,8 @@ Our app has many functions: including search engine according to keywords/ingred
 1. Flask: to build a web app
 2. Urllib.request: to send HTTP requests to APIs and retrieve data
 3. PPrint 
+
+To see more detailed explanation for our finished codes, and how to implement the code on your end, refer to our [webpage](https://sites.google.com/babson.edu/wonderful-food-web-app/developers-notes)!
 
 
 ## 4. Project Schedule
