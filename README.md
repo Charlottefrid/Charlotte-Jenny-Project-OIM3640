@@ -7,6 +7,7 @@ This project's primary objective is to provide various recipes from our enriched
 
 The ultimate recipe app is designed specifically for college students and busy employees who are not experienced with culinary and want to try out new recipes. Through searching manually, users will be able to generate random recipes or  search for recipes/restaurant menus through using keywords or ingredients, and create total price, price/serving, instructions, cooking time, wine recommendation, etc. on the minimum viable product (MVP). Users do not need to spend too much time searching for each information; they will have a one-for-all experience. To develop the MVP, we will utilize existing APIs for recipes. The stretch goal is to create a web app that allows users to input the food they are craving and choose their recipe.
 
+
 ## 2. Learning Objectives
 
  **1. Shared Learning Goals**
